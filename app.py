@@ -7,7 +7,7 @@ import streamlit as st
 
 
 POSTER_FALLBACK = "https://placehold.co/500x750?text=No+Poster"
-TMDB_API_KEY = os.getenv("8265bd1679663a7ea12ac168da84d2e")
+TMDB_API_KEY = os.getenv("TMDB_API_KEY")
 DATA_DIR = Path(__file__).resolve().parent
 
 
@@ -86,8 +86,8 @@ st.title("Movie Recommender")
 st.caption("Find films with a similar story and feel.")
 
 movies, similarity = load_recommender_data()
-# if not TMDB_API_KEY:
-#     st.info("Set the TMDB_API_KEY environment variable to show movie posters.")
+if not TMDB_API_KEY:
+    st.info("Set the TMDB_API_KEY environment variable to show movie posters.")
 
 selected_movie = st.selectbox(
     "Choose a movie",
